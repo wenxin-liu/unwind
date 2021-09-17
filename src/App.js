@@ -63,8 +63,6 @@ class Clock extends React.Component {
   }
 }
 
-// ReactDOM.render(<Clock/>, document.getElementById('root'));
-
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -96,11 +94,36 @@ class NameForm extends React.Component {
   }
 }
 
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'Start timer' : 'End timer'}
+      </button>
+    );
+  }
+}
+
 function App() {
   return (
     <div>
       <Clock />
       <NameForm />
+      <Toggle />
     </div>
   );
 }
