@@ -5,8 +5,8 @@ import './App.css';
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '', time: {}, seconds: 5};
-    this.timer = 0;
+    this.state = {value: '', time: {}, seconds: 0};
+    this.timer = [];
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -35,14 +35,24 @@ class Clock extends React.Component {
   }
 
   startTimer(event) {
-    if (this.timer == 0 && this.state.seconds > 0) {
-      this.timer = setInterval(this.countDown, 1000);
+    this.state.seconds = this.state.value;
+
+    if (this.state.seconds > 0) {
+      this.timer.push(setInterval(this.countDown, 1000));
     }
     event.preventDefault();
   }
 
   countDown() {
     // Remove one second, set state so a re-render happens.
+    console.log("this.timer value " + this.timer);
+
+    if (this.timer.length > 1) {
+      for (let i = 0; i < this.timer.length-1; i++) {
+        clearInterval(this.timer[i]);
+      }
+    }
+    
     let seconds = this.state.seconds - 1;
     this.setState({
       time: this.secondsToTime(seconds),
@@ -50,8 +60,8 @@ class Clock extends React.Component {
     });
 
     // Check if we're at zero.
-    if (seconds == 0) {
-      clearInterval(this.timer);
+    if (seconds <= 0) {
+      clearInterval(this.timer[this.timer.length-1]);
     }
   }
 
@@ -64,8 +74,8 @@ class Clock extends React.Component {
       <div>
         <form onSubmit={this.startTimer}>
           <label>
-            Name:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
+            Time:
+            <input type="text" onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
