@@ -63,6 +63,7 @@ class Clock extends React.Component {
     // Check if we're at zero.
     if (seconds <= 0) {
       clearInterval(this.timer[this.timer.length-1]);
+      alert("Your time is up!");
     }
   }
 
@@ -72,15 +73,15 @@ class Clock extends React.Component {
 
   render() {
     return(
-      <div>
+      <div id="Clock">
         <form onSubmit={this.startTimer}>
           <label>
-            Time:
+            Time in seconds:
             <input type="text" onChange={this.handleChange} />
           </label>
           <input type="submit" value="Start timer" />
         </form>
-        m: {this.state.time.m} s: {this.state.time.s}
+        minutes: {this.state.time.m} seconds: {this.state.time.s}
       </div>
     );
   }
