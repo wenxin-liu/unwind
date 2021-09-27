@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './App.css';
 
 class Clock extends React.Component {
-  constructor() {
-    super();
-    this.state = { time: {}, seconds: 5 };
+  constructor(props) {
+    super(props);
+    this.state = {value: '', time: {}, seconds: 5};
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   secondsToTime(secs){
@@ -33,10 +34,11 @@ class Clock extends React.Component {
     this.setState({ time: timeLeftVar });
   }
 
-  startTimer() {
+  startTimer(event) {
     if (this.timer == 0 && this.state.seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
+    event.preventDefault();
   }
 
   countDown() {
@@ -53,10 +55,20 @@ class Clock extends React.Component {
     }
   }
 
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
   render() {
     return(
       <div>
-        <button onClick={this.startTimer}>Start</button>
+        <form onSubmit={this.startTimer}>
+          <label>
+            Name:
+            <input type="text" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
         m: {this.state.time.m} s: {this.state.time.s}
       </div>
     );
@@ -66,10 +78,12 @@ class Clock extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: '', time: {}, seconds: 5};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.timer = 0;
   }
 
   handleChange(event) {
@@ -77,19 +91,21 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
+
     alert('A name was submitted: ' + this.state.value);
     event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div></div>
+      // <form onSubmit={this.handleSubmit}>
+      // <label>
+      // Name:
+      // <input type="text" value={this.state.value} onChange={this.handleChange} />
+      // </label>
+      // <input type="submit" value="Submit" />
+      // </form>
     );
   }
 }
@@ -112,7 +128,7 @@ class Toggle extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'Start timer' : 'End timer'}
+      {this.state.isToggleOn ? 'Start timer' : 'End timer'}
       </button>
     );
   }
@@ -121,9 +137,9 @@ class Toggle extends React.Component {
 function App() {
   return (
     <div>
-      <Clock />
-      <NameForm />
-      <Toggle />
+    <Clock />
+    <NameForm />
+    <Toggle />
     </div>
   );
 }
