@@ -42,7 +42,19 @@ class Clock extends React.Component {
 
   startTimer(event) {
     let seconds = 0;
-    seconds += parseInt(this.state.inputMinutes) * 60 + parseInt(this.state.inputSeconds);
+
+    let inputMinutes = parseInt(this.state.inputMinutes);
+    let inputSeconds = parseInt(this.state.inputSeconds);
+
+    if (isNaN(inputMinutes)) {
+      inputMinutes = 0;
+    }
+
+    if (isNaN(inputSeconds)) {
+      inputSeconds = 0;
+    }
+
+    seconds += inputMinutes * 60 + inputSeconds;
 
     this.setState({
       seconds: seconds

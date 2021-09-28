@@ -1,4 +1,6 @@
 #clock-wrapper {
+  border-radius: 10px;
+  border: 1px solid #808080;
   position: absolute;
   right: 20px;
   top: 20px;
