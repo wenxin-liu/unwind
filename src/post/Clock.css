@@ -1,7 +1,26 @@
-#Clock {
+#clock-wrapper {
   position: absolute;
   right: 20px;
   top: 20px;
   background-color: white;
-  padding: 1%;
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+}
+
+#inner-clock {
+  display: inline-block;
+  text-align: left;
+}
+
+#set-timer {
+  padding: 10px 0 30px;
+}
+
+#set-timer > input[type=text] {
+  width: 60px;
+}
+
+#set-timer > input[name=inputSeconds] {
+  margin: 0 25px 0 2px;
 }

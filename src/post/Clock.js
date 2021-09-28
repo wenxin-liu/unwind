@@ -56,15 +56,15 @@ class Clock extends React.Component {
   }
 
   countDown() {
-    // Remove one second, set state so a re-render happens.
-    console.log("this.timer value " + this.timer);
-
-    if (this.timer.length > 1) {
+    let moreThanOneTimer = this.timer.length > 1;
+    if (moreThanOneTimer) {
       for (let i = 0; i < this.timer.length - 1; i++) {
+        // If more than one timer, clear all previous timers except latest
         clearInterval(this.timer[i]);
       }
     }
 
+    // Remove one second, set state so a re-render happens.
     let seconds = this.state.seconds - 1;
     this.setState({time: this.secondsToTime(seconds), seconds: seconds});
 
@@ -83,22 +83,16 @@ class Clock extends React.Component {
   }
 
   render() {
-    return (<div id="Clock">
-      Set timer?
-      <form onSubmit={this.startTimer}>
-        <label>
-          Minutes:
-          <input type="text" name="inputMinutes" onChange={this.handleChange}/>
-        </label>
-        <label>
-          Seconds:
-          <input type="text" name="inputSeconds" onChange={this.handleChange}/>
-        </label>
-        <input type="submit" value="Start timer"/>
-      </form>
-      Time left:
-      minutes: {this.state.time.m}
-      seconds: {this.state.time.s}
+    return (<div id="clock-wrapper">
+      <div id="inner-clock">
+        Set timer?
+        <form id="set-timer" onSubmit={this.startTimer}>
+          <input type="text" name="inputMinutes" placeholder="Minutes" onChange={this.handleChange}/>
+          <input type="text" name="inputSeconds" placeholder="Seconds" onChange={this.handleChange}/>
+          <input type="submit" value="Start timer"/>
+        </form>
+        Time left: {this.state.time.m} minutes &nbsp; {this.state.time.s} seconds
+      </div>
     </div>);
   }
 }
