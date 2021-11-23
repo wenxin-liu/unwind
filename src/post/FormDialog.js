@@ -9,34 +9,49 @@ import DialogTitle from '@mui/material/DialogTitle';
 import './FormDialog.css'
 import icon from './clock.png'
 
-export default function FormDialog() {
-  const [open, setOpen] = React.useState(false);
+class FormDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
 
-  const handleClose = () => {
-    console.log("hello world");
-    setOpen(false);
-  };
+  handleClickOpen() {
+    this.setState({
+      open: true
+    });
+  }
 
-  return (<div>
-    <Button id="timer" variant="outlined" onClick={handleClickOpen}>
-      <img src={icon}/>
-    </Button>
-    <Dialog open={open} onClose={handleClose}>
-      <DialogTitle>Set a timer?</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Limit break length
-        </DialogContentText>
-        <TextField autoFocus margin="normal" id="outlined-helperText" label="Minutes" defaultValue="5"/>
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Submit</Button>
-      </DialogActions>
-    </Dialog>
-  </div>);
+  handleClose() {
+    this.setState({
+      open: false
+    });
+  }
+
+  render() {
+    return (<div>
+      <Button id="timer" variant="outlined" onClick={this.handleClickOpen}>
+        <img src={icon}/>
+      </Button>
+      <Dialog open={this.state.open} onClose={this.handleClose}>
+        <DialogTitle>Set a timer?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Limit break length
+          </DialogContentText>
+          <TextField autoFocus margin="normal" id="outlined-helperText" label="Minutes" defaultValue="5"/>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.handleClose}>Cancel</Button>
+          <Button onClick={this.handleClose}>Submit</Button>
+        </DialogActions>
+      </Dialog>
+    </div>);
+  }
 }
+
+export default FormDialog;

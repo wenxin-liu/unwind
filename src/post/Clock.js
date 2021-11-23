@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Clock.css';
-import './youtube.css'
 
 class Clock extends React.Component {
   constructor(props) {
