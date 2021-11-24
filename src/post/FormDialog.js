@@ -136,22 +136,39 @@ class FormDialog extends React.Component {
     return (
     <div>
 
-      <Button variant="outlined" color="primary" id="timer" startIcon={<AlarmIcon/>}  onClick={this.handleClickOpen}>
+      <Button
+        variant="outlined"
+        color="primary"
+        id="timer"
+        startIcon={<AlarmIcon/>}
+        onClick={this.handleClickOpen}>
         {this.state.buttonMessage}
       </Button>
 
       <Dialog open={this.state.open} onClose={this.handleClose}>
         <DialogTitle>Set a timer?</DialogTitle>
+
         <DialogContent>
           <DialogContentText>
-            Limit break length
+            Alert when break is over and it's back to work.
           </DialogContentText>
-          <TextField autoFocus="autoFocus" margin="normal" id="outlined-helperText" label="Minutes" onChange={this.handleChange} name="inputMinutes"/>
+
+          <TextField
+            autoFocus
+            fullWidth
+            autoComplete="off"
+            margin="normal"
+            id="outlined-helperText"
+            label="Minutes"
+            onChange={this.handleChange}
+            name="inputMinutes"/>
         </DialogContent>
+
         <DialogActions>
           <Button onClick={this.handleClose}>Cancel</Button>
           <Button onClick={this.startTimer}>Submit</Button>
         </DialogActions>
+
       </Dialog>
 
     </div>);
