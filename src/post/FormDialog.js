@@ -24,7 +24,7 @@ class FormDialog extends React.Component {
       inputSeconds: 0,
       time: {},
       seconds: 0,
-      buttonMessage: "Timer?"
+      buttonMessage: "Add"
     };
 
     this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -62,7 +62,7 @@ class FormDialog extends React.Component {
     this.handleClose();
 
     this.setState({
-      buttonMessage: "Timer on"
+      buttonMessage: "On"
     });
 
     let seconds = 0;
@@ -111,7 +111,7 @@ class FormDialog extends React.Component {
       alert("Your time is up!");
 
       this.setState({
-        buttonMessage: "Timer?"
+        buttonMessage: "Add"
       });
     }
   }
