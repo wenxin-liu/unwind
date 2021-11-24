@@ -140,6 +140,7 @@ class FormDialog extends React.Component {
         variant="outlined"
         color="primary"
         id="timer"
+        size="large"
         startIcon={<AlarmIcon/>}
         onClick={this.handleClickOpen}>
         {this.state.buttonMessage}

@@ -1,12 +1,7 @@
 #timer {
-  /* border-radius: 10px; */
-  /* border: 2px solid #909090; */
   position: absolute;
-  right: 35px;
-  top: 35px;
+  right: 45px;
+  top: 40px;
   background-color: white;
-  /* padding: 13px; */
-  /* width: 250px; */
-  text-align: center;
   z-index: 101;
 }
