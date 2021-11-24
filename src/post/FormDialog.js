@@ -6,8 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+
+import AlarmIcon from '@mui/icons-material/Alarm';
+
 import './FormDialog.css'
-import icon from './../assets/clock.png'
+
 
 //TODO: refactor and clean up now unused seconds / inputSeconds logic
 //TODO: break up into smaller / two classes?, form dialog and clock?
@@ -20,7 +23,8 @@ class FormDialog extends React.Component {
       inputMinutes: 0,
       inputSeconds: 0,
       time: {},
-      seconds: 0
+      seconds: 0,
+      buttonMessage: "Timer?"
     };
 
     this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -56,7 +60,11 @@ class FormDialog extends React.Component {
 
   startTimer(event) {
     this.handleClose();
-    console.log("timer has started");
+
+    this.setState({
+      buttonMessage: "Timer on"
+    });
+
     let seconds = 0;
 
     let inputMinutes = parseInt(this.state.inputMinutes);
@@ -99,7 +107,12 @@ class FormDialog extends React.Component {
     // Check if we're at zero.
     if (seconds <= 0) {
       clearInterval(this.timer[this.timer.length - 1]);
+
       alert("Your time is up!");
+
+      this.setState({
+        buttonMessage: "Timer?"
+      });
     }
   }
 
@@ -118,32 +131,29 @@ class FormDialog extends React.Component {
     this.setState({open: false});
   }
 
+
   render() {
-    return (<div>
-      <Button id="timer" variant="outlined" onClick={this.handleClickOpen}>
-        <img src={icon}/>
+    return (
+    <div>
+
+      <Button variant="outlined" color="primary" id="timer" startIcon={<AlarmIcon/>}  onClick={this.handleClickOpen}>
+        {this.state.buttonMessage}
       </Button>
+
       <Dialog open={this.state.open} onClose={this.handleClose}>
         <DialogTitle>Set a timer?</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Limit break length
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="normal"
-            id="outlined-helperText"
-            label="Minutes"
-            defaultValue="5"
-            onChange={this.handleChange}
-            name="inputMinutes"
-          />
+          <TextField autoFocus="autoFocus" margin="normal" id="outlined-helperText" label="Minutes" onChange={this.handleChange} name="inputMinutes"/>
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose}>Cancel</Button>
           <Button onClick={this.startTimer}>Submit</Button>
         </DialogActions>
       </Dialog>
+
     </div>);
   }
 }
