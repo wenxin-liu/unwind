@@ -151,7 +151,7 @@ class FormDialog extends React.Component {
 
         <DialogContent>
           <DialogContentText>
-            Alert when break is over and it's back to work.
+            Alert when break is over and it's time to go back to work.
           </DialogContentText>
 
           <TextField
