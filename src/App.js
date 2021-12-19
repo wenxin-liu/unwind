@@ -1,10 +1,12 @@
 import React from 'react';
-import FormDialog from './post/FormDialog.js'
+import FormDialog from './components/timer/Timer'
 import './App.css';
+import Home from './pages';
 
 function App() {
   return (
     <div>
+      <Home/>
       <FormDialog />
     </div>
   );

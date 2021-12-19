@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <meta name="description" content="Take a break in virtual nature when you have that 10 minutes between meetings" />
+
   <link rel="stylesheet" href="%PUBLIC_URL%/css/Youtube.css">
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -28,16 +29,24 @@
   <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/assets/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/assets/favicon/favicon-16x16.png">
+
   <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
+
+  <link rel="stylesheet" href="https://use.typekit.net/bjg8ngu.css">
+
   <title>Unwind</title>
 </head>
 
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+
+  <div id="root"></div>
+
   <div class="video-background">
     <div id="ytplayer"></div>
   </div>
+
   <script>
     // Load the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
@@ -120,7 +129,6 @@
      * End:-  function to create , read and erase Cookie
      */
   </script>
-  <div id="root"></div>
 </body>
 
 </html>

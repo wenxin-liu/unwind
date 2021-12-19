@@ -9,13 +9,13 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import AlarmIcon from '@mui/icons-material/Alarm';
 
-import './FormDialog.css'
+import './Timer.css'
 
 
 //TODO: refactor and clean up now unused seconds / inputSeconds logic
 //TODO: break up into smaller / two classes?, form dialog and clock?
 
-class FormDialog extends React.Component {
+class Timer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -176,4 +176,4 @@ class FormDialog extends React.Component {
   }
 }
 
-export default FormDialog;
+export default Timer;

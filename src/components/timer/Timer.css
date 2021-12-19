@@ -1,7 +1,7 @@
 #timer {
   position: absolute;
   right: 45px;
-  top: 40px;
+  top: 105vh;
   background-color: white;
   z-index: 101;
 }
