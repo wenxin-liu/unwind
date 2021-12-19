@@ -12,19 +12,30 @@
 .pre-text {
   position: absolute;
   top: 10vh;
-  left: 46vh;
-  font-family: transat,sans-serif;
-  font-weight: 500;
-  font-style: italic;
+  left: 50vh;
   font-size: 40px;
+  font-family: transat,sans-serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .location {
   position: absolute;
-  top: 10vh;
-  left: 46vh;
+  top: 9vh;
+  left: 50vh;
   font-family: source-serif-pro,serif;
   font-weight: 600;
   font-style: normal;
   font-size: 150px;
+}
+
+#start-button {
+  position: absolute;
+  background-color: #193ED8;
+  width: 170px;
+  height: 58px;
+  bottom: 17vh;
+  left: 80vh;
+  font-size: 22px;
+  border-radius: 16px;
 }
