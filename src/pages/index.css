@@ -1,28 +1,33 @@
-.HeroContainer {
-  color: #000000;
+#landing-page-flex-container {
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
+  justify-content: center;
   padding: 0 30px;
   height: 100vh;
-  position: relative;
   z-index: 1;
 }
 
-.pre-text {
+#landing-page-flex-item-text {
+  height: auto;
+  top: 15vh;
   position: absolute;
-  top: 10vh;
-  left: 50vh;
+}
+
+#landing-page-flex-item-button {
+  height: auto;
+  bottom: 21vh;
+  position: absolute;
+}
+
+#pre-text {
+  margin: 0;
   font-size: 40px;
   font-family: transat,sans-serif;
   font-weight: 400;
   font-style: italic;
 }
 
-.location {
-  position: absolute;
-  top: 9vh;
-  left: 50vh;
+#location {
+  margin-top:60px;
   font-family: source-serif-pro,serif;
   font-weight: 600;
   font-style: normal;
@@ -30,12 +35,9 @@
 }
 
 #start-button {
-  position: absolute;
   background-color: #193ED8;
   width: 170px;
   height: 58px;
-  bottom: 17vh;
-  left: 80vh;
   font-size: 22px;
   border-radius: 16px;
 }
