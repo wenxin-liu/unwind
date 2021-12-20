@@ -1,5 +1,8 @@
 import * as React from 'react';
+
+import AlarmIcon from '@mui/icons-material/Alarm';
 import Button from '@mui/material/Button';
+
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -7,10 +10,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import AlarmIcon from '@mui/icons-material/Alarm';
+import {StyledEngineProvider} from '@mui/material/styles';
 
 import './Timer.css'
-
 
 //TODO: refactor and clean up now unused seconds / inputSeconds logic
 //TODO: break up into smaller / two classes?, form dialog and clock?
@@ -61,9 +63,7 @@ class Timer extends React.Component {
   startTimer(event) {
     this.handleClose();
 
-    this.setState({
-      buttonMessage: "On"
-    });
+    this.setState({buttonMessage: "On"});
 
     let seconds = 0;
 
@@ -110,9 +110,7 @@ class Timer extends React.Component {
 
       alert("Your time is up!");
 
-      this.setState({
-        buttonMessage: "Add"
-      });
+      this.setState({buttonMessage: "Add"});
     }
   }
 
@@ -131,48 +129,34 @@ class Timer extends React.Component {
     this.setState({open: false});
   }
 
-
   render() {
-    return (
-    <div>
+    return (<StyledEngineProvider injectFirst="injectFirst">
+      <div>
 
-      <Button
-        variant="outlined"
-        color="primary"
-        id="timer"
-        size="large"
-        startIcon={<AlarmIcon/>}
-        onClick={this.handleClickOpen}>
-        {this.state.buttonMessage}
-      </Button>
+        <Button variant="outlined" id="timer-button" size="large" startIcon={<AlarmIcon/>} onClick={this.handleClickOpen}>
+          {this.state.buttonMessage}
+        </Button>
 
-      <Dialog open={this.state.open} onClose={this.handleClose}>
-        <DialogTitle>Set a timer?</DialogTitle>
+        <Dialog open={this.state.open} onClose={this.handleClose}>
+          <DialogTitle>Add Timer?</DialogTitle>
 
-        <DialogContent>
-          <DialogContentText>
-            Alert when break is over and it's time to go back to work.
-          </DialogContentText>
+          <DialogContent>
+            <DialogContentText>
+              Alert when break is over and it's time to go back to work.
+            </DialogContentText>
 
-          <TextField
-            autoFocus
-            fullWidth
-            autoComplete="off"
-            margin="normal"
-            id="outlined-helperText"
-            label="Minutes"
-            onChange={this.handleChange}
-            name="inputMinutes"/>
-        </DialogContent>
+            <TextField autoFocus="autoFocus" fullWidth="fullWidth" autoComplete="off" margin="normal" id="outlined-helperText" label="Minutes" onChange={this.handleChange} name="inputMinutes"/>
+          </DialogContent>
 
-        <DialogActions>
-          <Button onClick={this.handleClose}>Cancel</Button>
-          <Button onClick={this.startTimer}>Submit</Button>
-        </DialogActions>
+          <DialogActions>
+            <Button onClick={this.handleClose}>Cancel</Button>
+            <Button onClick={this.startTimer}>Submit</Button>
+          </DialogActions>
 
-      </Dialog>
+        </Dialog>
 
-    </div>);
+      </div>
+    </StyledEngineProvider>);
   }
 }
 

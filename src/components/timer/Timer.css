@@ -1,7 +1,24 @@
-#timer {
+#timer-button {
   position: absolute;
-  right: 45px;
+  right: 5vh;
   top: 105vh;
+  color: #193ED8;
   background-color: white;
-  z-index: 101;
+  border: 1px solid #193ED8;
+  width: 120px;
+  border-radius: 16px;
+  z-index: 1;
 }
+
+.MuiPaper-root {
+  border-radius: 16px;
+  padding: 15px;
+}
+
+.MuiButtonBase-root {
+  color: #193ED8;
+}
+
+/* .Mui-focused {
+
+} */
