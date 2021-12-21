@@ -23,6 +23,9 @@ const Home = () => {
           START
         </Button>
       </div>
+    <div id="landing-page-flex-item-previous-destinations">
+      <a href="#">previous destinations</a>
+    </div>
     </div>)
 };
 

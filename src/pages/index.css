@@ -14,8 +14,25 @@
 
 #landing-page-flex-item-button {
   height: auto;
-  bottom: 21vh;
+  bottom: 22vh;
   position: absolute;
+}
+
+#landing-page-flex-item-previous-destinations {
+  height: auto;
+  bottom: 14vh;
+  position: absolute;
+  font-size: 15px;
+  font-family: arial,sans-serif;
+}
+
+#landing-page-flex-item-previous-destinations a {
+  color: #193ED8;
+  text-decoration: none;
+}
+
+#landing-page-flex-item-previous-destinations a:hover {
+  text-decoration: underline;
 }
 
 #pre-text {
